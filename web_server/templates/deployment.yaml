@@ -32,15 +32,3 @@ spec:
             EOSCRIPT
           ports:
             - containerPort: 80
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ .Release.Name }}-frontend
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      protocol: TCP
-  selector:
-    app: {{ .Release.Name }}-frontend
