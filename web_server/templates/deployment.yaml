@@ -26,6 +26,7 @@ spec:
             echo "Content-Type: text/html"
             echo ""
             echo "This is frontend.<br>"
+            echo "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/359px-Cat_November_2010-1a.jpg>"
             echo "This is the a web page fetched from the backend server:<pre>"
             echo \$(wget -qO - {{ .Release.Name }}-backend)
             EOSCRIPT
