@@ -14,7 +14,7 @@ spec:
       containers:
         - image: busybox
           name: {{ .Release.Name }}-backend
-          command: [sh, -c, "echo 'This is backend' > index.html && httpd -f"]
+          command: [sh, -c, "echo 'This is backend! TAKE FOUR!' > index.html && httpd -f"]
           ports:
             - containerPort: 80
 ---

@@ -27,7 +27,7 @@ spec:
             echo ""
             echo "This is frontend.<br>"
             echo "This is the a web page fetched from the backend server:<pre>"
-            echo $(wget -qO - {{ .Release.Name }}-backend)
+            echo \$(wget -qO - {{ .Release.Name }}-backend)
             EOSCRIPT
           ports:
             - containerPort: 80
@@ -37,7 +37,7 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}-frontend
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 80
       protocol: TCP
