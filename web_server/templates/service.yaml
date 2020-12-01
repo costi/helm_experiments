@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}-frontend
 spec:
-  type: LoadBalancer
   ports:
     - port: 80
       protocol: TCP

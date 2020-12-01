@@ -1,0 +1,23 @@
+# CRD version
+# https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: go-to-hello
+spec:
+  replacePath:
+    path: /cgi-bin/hello
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-ingress
+spec:
+  routes:
+  - match: "Path(`/{{ .Release.Name }}`)"
+    kind: Rule
+    services:
+    - name: {{ .Release.Name }}-frontend
+      port: 80
+    middlewares:
+    - name: go-to-hello
